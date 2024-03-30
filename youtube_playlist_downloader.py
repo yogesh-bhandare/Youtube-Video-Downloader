@@ -94,7 +94,7 @@ def index_download_playlist(url, resolution='1080p', out_path="./"):
     try:
         yt_playlist = Playlist(url)
         cnt = 1
-        for video_url in yt_playlist.video_urls[:3]:
+        for video_url in yt_playlist.video_urls:
             yt_video = YouTube(video_url)
             stream = yt_video.streams.filter(res=f"{resolution}").first()
             if stream:
@@ -121,7 +121,7 @@ def index_download_playlist(url, resolution='1080p', out_path="./"):
 #         raise ValueError(f"Invalid URL. Please enter a valid URL.")
 
 def res_validation(res):
-    valid_res = ["1080p", "720p", "480p", "360p", "240p", "144p"]
+    valid_res = ["1080p60","1080p", "720p", "480p", "360p", "240p", "144p"]
     if res not in valid_res:
         raise ValueError(f"Invalid Resoultion. Please enter a valid Resoultion.")
 
